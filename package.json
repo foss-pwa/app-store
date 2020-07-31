@@ -1,0 +1,26 @@
+{
+  "name": "app-store",
+  "version": "0.1.0",
+  "description": "app store for PWAs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/foss-pwa/app-store.git"
+  },
+  "keywords": [
+    "PWA",
+    "appstore"
+  ],
+  "author": "HKalbasi",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/foss-pwa/app-store/issues"
+  },
+  "homepage": "https://github.com/foss-pwa/app-store#readme",
+  "dependencies": {
+    "yaml": "^1.10.0"
+  }
+}

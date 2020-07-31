@@ -1,0 +1,11 @@
+- id: breaklock
+  cs: 2
+  lang:
+    en:
+      manifest: https://maxwellito.github.io/breaklock/manifest.json
+
+- id: telegram
+  cs: 1
+  lang:
+    en:
+      manifest: https://web.telegram.org/manifest.json
