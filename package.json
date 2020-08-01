@@ -4,6 +4,8 @@
   "description": "app store for PWAs",
   "main": "index.js",
   "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +23,12 @@
   },
   "homepage": "https://github.com/foss-pwa/app-store#readme",
   "dependencies": {
+    "@babel/core": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "webpack": "^4.44.1",
     "yaml": "^1.10.0"
   }
 }
