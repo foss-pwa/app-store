@@ -1,11 +1,15 @@
 - id: breaklock
-  cs: 2
+  cs: 3
+  repository: https://github.com/maxwellito/breaklock/
+  license: MIT
   lang:
     en:
       manifest: https://maxwellito.github.io/breaklock/manifest.json
 
 - id: telegram
-  cs: 1
+  cs: 5
+  repository: https://github.com/zhukov/webogram/
+  license: GPL-3.0-or-later
   lang:
     en:
-      manifest: https://web.telegram.org/manifest.json
+      manifest: https://zhukov.github.io/webogram/manifest.json
