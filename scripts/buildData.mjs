@@ -12,16 +12,6 @@ const dataFolder = join(buildFolder, 'dist', 'data');
 
 const sort = (ar, cmp) => [...ar].sort(cmp);
 
-const levels = (x) => {
-  let z = 1;
-  const res = [1];
-  while (z <= x) {
-    z *= 2;
-    res.push(z);
-  }
-  return res;
-};
-
 const level = (x) => {
   if (x%2 === 1) return 1;
   return 2*level(x/2);
