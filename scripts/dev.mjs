@@ -6,10 +6,13 @@ import { join } from "path";
 import { fileMap } from "./fileMap.mjs";
 import { developmentCompiler } from "./webpackCompiler.mjs";
 import { spawn } from "child_process";
+import yaml from "yaml";
 
 const symlink = promisify(fs.symlink);
 const mkdir = promisify(fs.mkdir);
 const rmdir = promisify(fs.rmdir);
+const readFile = promisify(fs.readFile);
+const writeFile = promisify(fs.writeFile);
 
 const dist = join(buildFolder, 'dist');
 
@@ -20,7 +23,12 @@ const dev = async () => {
   await Promise.all(fileMap.map(async ({ from, to }) => {
     const f = join(srcFolder, from);
     const t = join(buildFolder, to);
-    await symlink(f, t);
+    if (from.endsWith('.yml')) {
+      const data = yaml.parse((await readFile(f)).toString());
+      await writeFile(t, JSON.stringify(data));
+    } else {
+      await symlink(f, t);
+    }
   }));
   developmentCompiler.watch({
     ignores: /node_modules/,

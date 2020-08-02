@@ -7,6 +7,10 @@ export const fileMap = [
     to: 'dist/manifest.json',
   },
   {
+    from: 'categories.yml',
+    to: 'dist/data/categories.json',
+  },
+  {
     from: 'index.html',
     to: 'index.html',
   },

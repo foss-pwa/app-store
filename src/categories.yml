@@ -1,0 +1,7 @@
+- name: development
+  apps:
+    - webassembly_sh
+    - vim_wasm
+- name: games
+  apps:
+    - breaklock

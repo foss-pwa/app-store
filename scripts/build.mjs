@@ -5,16 +5,12 @@ import { buildFolder, srcFolder } from "../paths.mjs";
 import { join } from "path";
 import { fileMap } from "./fileMap.mjs";
 import { productionCompiler as compiler } from "./webpackCompiler.mjs";
+import yaml from "yaml";
 
 const mkdir = promisify(fs.mkdir);
 const rmdir = promisify(fs.rmdir);
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
-
-const minifyJSON = async (from, to) => {
-  const data = JSON.parse((await readFile(from)).toString());
-  await writeFile(to, JSON.stringify(data));
-};
 
 const dist = join(buildFolder, 'dist');
 
@@ -26,6 +22,9 @@ const build = async () => {
     const t = join(buildFolder, to);
     if (from.endsWith('.json')) {
       const data = JSON.parse((await readFile(f)).toString());
+      await writeFile(t, JSON.stringify(data));
+    } else if (from.endsWith('.yml')) {
+      const data = yaml.parse((await readFile(f)).toString());
       await writeFile(t, JSON.stringify(data));
     } else {
       await writeFile(t, await readFile(f));
