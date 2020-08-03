@@ -1,7 +1,7 @@
 import { buildData } from "./buildData.mjs";
 import fs from "fs";
 import { promisify } from "util";
-import { buildFolder, srcFolder } from "../paths.mjs";
+import { buildFolder, srcFolder, certFolder } from "../paths.mjs";
 import { join } from "path";
 import { fileMap } from "./fileMap.mjs";
 import { developmentCompiler } from "./webpackCompiler.mjs";
@@ -34,7 +34,16 @@ const dev = async () => {
     ignores: /node_modules/,
   }, (err, stats) => {
   });
-  const server = spawn('http-server', [buildFolder]);
+  const server = spawn('http-server', [
+    buildFolder,
+    '--ssl',
+    '--cert',
+    join(certFolder, 'device.crt'),
+    '--key',
+    join(certFolder, 'device.key'),
+  ]);
+  server.on('stderr', console.error);
+  server.on('stdout', console.log);
 };
 
 dev();
