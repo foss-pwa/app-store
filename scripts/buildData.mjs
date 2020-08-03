@@ -22,15 +22,21 @@ export const buildData = async () => {
   await mkdir(dataFolder, { recursive: true });
   const sd = sort(data, (x, y) => x.cs - y.cs);
   const mxcs = sd[sd.length - 1].cs + 1;
+  const mics = sd[0].cs;
+  await writeFile(join(dataFolder, 'cs.json'), JSON.stringify({ mxcs, mics }));
+  await writeFile(
+    join(dataFolder, '0.json'),
+    JSON.stringify(data.map(({ cs, ...others }) => others)),
+  );
   await Promise.all(
-    new Array(mxcs).fill().map(async (_, i) => {
-      const l = i;
-      const r = i === 0 ? mxcs : i + level(i);
+    new Array(mxcs - mics).fill().map(async (_, i) => {
+      const l = i + mics;
+      const r = l + level(l);
       const cd = data
         .filter(({ cs }) => (l <= cs && cs < r))
         .map(({ cs, ...others }) => others);
-      const path = join(dataFolder, `${i}.json`);
+      const path = join(dataFolder, `${l}.json`);
       await writeFile(path, JSON.stringify(cd));
-    })
+    }),
   );
 };
