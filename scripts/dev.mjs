@@ -41,9 +41,11 @@ const dev = async () => {
     join(certFolder, 'device.crt'),
     '--key',
     join(certFolder, 'device.key'),
-  ]);
-  server.on('stderr', console.error);
-  server.on('stdout', console.log);
+    '--port',
+    '8080',
+  ], {
+    stdio: 'inherit',
+  });
 };
 
 dev();
