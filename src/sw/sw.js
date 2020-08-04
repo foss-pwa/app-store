@@ -3,7 +3,9 @@
 
 console.log('salam');
 
-const version = '1.0.6';
+const mode = 'prod';
+
+const version = '1.0.0';
 const mainCache = 'main-v1';
 const assetCache = 'asset-v1';
 const expectedCaches = [mainCache, assetCache];
@@ -50,11 +52,15 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
-  if (url.pathname.startsWith('/dist/')) {
+  if (mode === 'dev') {
+    event.respondWith(
+      fetch(event.request),
+    );
+  } else if (url.pathname.startsWith('/dist/')) {
     if (url.pathname.startsWith('/dist/data')) {
       event.respondWith(
         fetch(event.request),
-      )
+      );
     } else {
       event.respondWith(
         caches.match(event.request),
