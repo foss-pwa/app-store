@@ -36,7 +36,7 @@ echo "Foss pwa CA"
 echo "security section"
 echo "kalbasi"
 echo "hamidrezakalbasi@protonmail.com"
-) | openssl req -x509 -new -nodes -key rootCA.key -days 3650 -out rootCA.pem &> /dev/null
+) | openssl req -x509 -new -nodes -key rootCA.key -days 3650 -out rootCA.crt &> /dev/null
 
 echo "generated root CA"
 openssl genrsa -out device.key 2048 &> /dev/null
@@ -53,4 +53,4 @@ echo "password"
 echo "foss pwa"
 ) | openssl req -new -key device.key -out device.csr &> /dev/null
 
-openssl x509 -req -in device.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out device.crt -days 3650
+openssl x509 -req -in device.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out device.crt -days 3650
