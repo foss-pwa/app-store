@@ -11,6 +11,10 @@ export const fileMap = [
     to: 'dist/data/categories.json',
   },
   {
+    from: 'sw/sw.js',
+    to: 'sw.js',
+  },
+  {
     from: 'index.html',
     to: 'index.html',
   },

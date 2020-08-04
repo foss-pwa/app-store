@@ -3,12 +3,13 @@
 import React from "react";
 import { Navbar } from "./Navbar";
 import { CategoryPage } from "./category/CategoryPage";
+import { ServiceWrapper } from "./sw/ServiceWrapper";
 
 export const App = () => {
   return (
-    <div>
+    <ServiceWrapper>
       <CategoryPage/>
       <Navbar/>
-    </div>
+    </ServiceWrapper>
   );
-}
+};
