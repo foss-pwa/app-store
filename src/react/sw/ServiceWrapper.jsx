@@ -6,7 +6,7 @@ const firstFetchs = () => Promise.all([
   fetch("/dist/data/categories.json").then(res=>res.json()),
 ]);
 
-const ContentContext = React.createContext();
+export const ContentContext = React.createContext();
 
 export const ServiceWrapper = (props) => {
   console.log('aaah');
@@ -30,7 +30,7 @@ export const ServiceWrapper = (props) => {
       setContent(nc);
       localStorage.setItem('c', JSON.stringify(nc));
     })();
-  });
+  }, []);
   if (!ready) {
     return (
       <div style={{background:'black', position: 'fixed', top:0, left:0, width:'100%', height:'100%'}}>

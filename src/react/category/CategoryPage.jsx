@@ -1,38 +1,28 @@
-import React from "react";
-
-const navbarStyle = {
-  backgroundColor: 'blue',
-  color: 'white',
-  position: 'absolute',
-  bottom: '0',
-  left: '0',
-  width: 'calc(100% - 2rem)',
-  padding: '.5rem 1rem',
-  display: 'flex',
-};
-
-const buttonStyle = {
-  flexGrow: 1, textAlign: 'center',
-};
+import React, { useContext } from "react";
+import { ContentContext } from "../sw/ServiceWrapper";
 
 const CategoryList = (props) => {
   return (
     <div>
-      <h1>{props.label}</h1>
+      <h1>{props.name}</h1>
       <div>
-        boz boz
+        {props.apps.map((x)=>(
+          <div>
+            <a href={`/${x}`}>{x}</a>
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
 export const CategoryPage = () => {
+  const { categories } = useContext(ContentContext);
   return (
     <div>
-      <CategoryList label="latest"/>
-      <CategoryList label="categories"/>
-      <CategoryList label="search"/>
-      <CategoryList label="setting"/>
+      {categories.map((x)=>(
+        <CategoryList name={x.name} apps={x.apps}/>
+      ))}
     </div>
-  )
+  );
 };
