@@ -3,7 +3,8 @@ import { join } from "path";
 import { srcFolder } from "../paths.mjs";
 import { buildFolder } from "../paths.mjs";
 
-const config = {
+const config = (mode) => ({
+  mode,
   entry: {
     bundle: join(srcFolder, 'react', 'index.js'),
   },
@@ -12,7 +13,17 @@ const config = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              "@babel/preset-react",
+            ],
+            plugins: [
+              ...(mode === 'production' ? [] : ["@babel/plugin-transform-react-jsx-source"]),
+            ],
+          },
+        }],
       },
     ],
   },
@@ -25,14 +36,8 @@ const config = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
   ],
-};
-
-export const productionCompiler = webpack({
-  ...config,
-  mode: 'production',
 });
 
-export const developmentCompiler = webpack({
-  ...config,
-  mode: 'development',
-});
+export const productionCompiler = webpack(config('production'));
+
+export const developmentCompiler = webpack(config('development'));

@@ -24,10 +24,12 @@
   "homepage": "https://github.com/foss-pwa/app-store#readme",
   "dependencies": {
     "@babel/core": "^7.11.0",
+    "@babel/plugin-transform-react-jsx-source": "^7.10.5",
     "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "webpack": "^4.44.1",
     "yaml": "^1.10.0"
   }

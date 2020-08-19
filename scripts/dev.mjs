@@ -33,6 +33,12 @@ const dev = async () => {
   developmentCompiler.watch({
     ignores: /node_modules/,
   }, (err, stats) => {
+    if (err) {
+      console.log(err);
+    }
+    if (stats.hasErrors()) {
+      console.log(stats.toString({ colors: true }));
+    }
   });
   const server = spawn('http-server', [
     buildFolder,
