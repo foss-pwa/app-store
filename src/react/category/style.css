@@ -1,0 +1,16 @@
+.categoryList > h1 {
+  background: red;
+}
+
+.categoryItem {
+  display: inline-block;
+  background: black;
+  border-radius: 5px;
+  width: 100px;
+  height: 180px;
+  margin-inline-end: 20px;
+}
+
+.categoryItem > a {
+  color: white;
+}
