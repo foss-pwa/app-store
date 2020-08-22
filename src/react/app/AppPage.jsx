@@ -1,26 +1,37 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { ContentContext } from "../sw/ServiceWrapper";
-import { bestLang, getOld } from "../sw/manifestStore";
+import styles from "./style.css";
+import { useManifest } from "../sw/useManifest";
+
+const HeaderApp = (props) => {
+  return (
+    <div className={styles.HeaderApp}>
+      <img src={props.icon}/>
+      <div>
+        <h1>{props.name}</h1>
+        <p>{props.description}</p>
+        <a href={props.start_url}>launch</a>
+      </div>
+    </div>
+  );
+};
+
+export const Antifeature = (props) => {
+  if (!props.list) return <div/>;
+  return (
+    <div>
+      <h2>This app has antifeature</h2>
+      <ul>
+        {props.list.map((x) => <li key={x}>{x}</li>)}
+      </ul>
+    </div>
+  );
+};
 
 export const AppPage = () => {
   const { id } = useParams();
-  const { data } = useContext(ContentContext);
-  const [manifest, setManifest] = useState();
-  const obj = data.find((x)=>x.id === id);
-  useEffect(()=>{
-    (async () => {
-      if (obj === undefined) return;
-      const l = bestLang(obj.lang);
-      const url = obj.lang[l].manifest;
-      const r = await getOld(url, l);
-      setManifest({
-        ...r,
-        start_url: new URL(r.start_url, url).href,
-      });
-    })();
-  }, [id]);
-  if (!obj) {
+  const { manifest, data } = useManifest(id);
+  if (!data) {
     return <div>404</div>
   }
   if (!manifest) {
@@ -30,20 +41,24 @@ export const AppPage = () => {
         <p>
           loading
         </p>
+        <Antifeature list={data.antifeature}/>
         <p>
-          <a href={obj.repository}>View source</a> ({obj.license})
-        </p>    
+          <a href={data.repository}>View source</a> ({data.license})
+        </p>
       </div>
     )
   }
   return (
     <div>
-      <h1>{manifest.name}</h1>
+      <HeaderApp
+        name={manifest.name}
+        description={manifest.description}
+        icon={manifest.icon}
+        start_url={manifest.start_url}
+      />
+      <Antifeature list={data.antifeature}/>
       <p>
-        <a href={manifest.start_url}>launch</a>
-      </p>
-      <p>
-        <a href={obj.repository}>View source</a> ({obj.license})
+        <a href={data.repository}>View source</a> ({data.license})
       </p>
     </div>
   );

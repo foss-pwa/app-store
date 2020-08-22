@@ -3,6 +3,7 @@ import { ContentContext } from "../sw/ServiceWrapper";
 import { Link } from "react-router-dom";
 import { Navbar } from "../template/Navbar";
 import styles from "./style.css";
+import { CategoryItem } from "./CategoryItem";
 
 const CategoryList = (props) => {
   return (
@@ -10,9 +11,7 @@ const CategoryList = (props) => {
       <h1>{props.name}</h1>
       <div>
         {props.apps.map((x)=>(
-          <div key={x} className={styles.categoryItem}>
-            <Link to={`/${x}`}>{x}</Link>
-          </div>
+          <CategoryItem id={x}/>
         ))}
       </div>
     </div>
