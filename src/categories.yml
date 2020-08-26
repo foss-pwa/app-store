@@ -1,7 +1,18 @@
-- name: development
+- name: dev
   apps:
     - webassembly_sh
     - vim_wasm
+- name: tools
+  apps:
+    - qrcode_scanner
+    - qrcode_generator
+    - voice_recorder
 - name: games
   apps:
     - breaklock
+- name: social
+  apps:
+    - telegram
+- name: music
+  apps:
+    - sounddrown

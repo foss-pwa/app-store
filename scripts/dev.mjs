@@ -18,7 +18,7 @@ const dist = join(buildFolder, 'dist');
 
 const dev = async () => {
   await rmdir(buildFolder, { recursive: true });
-  await mkdir(dist, { recursive: true });
+  await mkdir(join(dist, 'l10n'), { recursive: true });
   await buildData();
   await Promise.all(fileMap.map(async ({ from, to }) => {
     const f = join(srcFolder, from);

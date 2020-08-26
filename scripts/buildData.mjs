@@ -18,12 +18,12 @@ const level = (x) => {
 };
 
 export const buildData = async () => {
-  const data = yaml.parse((await readFile(dataFile)).toString());
+  const { data, version } = yaml.parse((await readFile(dataFile)).toString());
   await mkdir(dataFolder, { recursive: true });
   const sd = sort(data, (x, y) => x.cs - y.cs);
   const mxcs = sd[sd.length - 1].cs + 1;
   const mics = sd[0].cs;
-  await writeFile(join(dataFolder, 'cs.json'), JSON.stringify({ mxcs, mics }));
+  await writeFile(join(dataFolder, 'cs.json'), JSON.stringify({ mxcs, mics, version }));
   await writeFile(
     join(dataFolder, '0.json'),
     JSON.stringify(data.map(({ cs, ...others }) => others)),

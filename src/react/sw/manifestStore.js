@@ -16,9 +16,25 @@ export const getOld = async (url, lang) => {
   });
   const cr = await ch.match(req);
   if (cr !== undefined) {
+    console.log(cr);
     return cr.json();
   }
-  const fr = await fetch(req);
-  await ch.put(req, fr.clone());
-  return fr.json();
+  try {
+    console.log(req);
+    const fr = await fetch(req);
+    await ch.put(req, fr.clone());
+    return fr.json();  
+  } catch (e) {
+    console.log(e);
+    const proxyReq = new Request(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, {
+      headers: {
+        "Accept-language": lang,
+      },
+    });
+    console.log(proxyReq);
+    const fr = await fetch(proxyReq);
+    const data = (await fr.json()).contents;
+    await ch.put(req, new Response(data));
+    return JSON.parse(data);
+  }
 };

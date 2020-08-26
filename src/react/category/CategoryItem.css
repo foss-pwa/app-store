@@ -9,8 +9,18 @@
 
 .image {
   margin: 0.5rem 2rem;
+  border-radius: 1rem;
   width: 4rem;
   height: 4rem;
+}
+
+.danger {
+  width: 1rem;
+  height: 1rem;
+  position: relative;
+  top: -4.5rem;
+  inset-inline-start: -0.5rem;
+  float: inline-end;
 }
 
 .label {

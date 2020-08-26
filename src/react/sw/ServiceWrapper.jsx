@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Spinner } from "../util/Spinner";
+import { init } from "../i18n/i18n";
 
 const firstFetchs = () => Promise.all([
   fetch("/dist/data/0.json", { cache: 'reload' }).then(res=>res.json()),
@@ -40,26 +41,33 @@ export const ServiceWrapper = (props) => {
   }, [ready, content]);
   useEffect(()=>{
     (async () => {
-      const c = localStorage.getItem('c');
-      if (c !== undefined) {
+      try{
+        const c = localStorage.getItem('c');
+        if (c != undefined) {
+          await init();
+          setContent(JSON.parse(c));
+          setReady(true);
+          return;
+        }
+        const res = await firstFetchs();
+        const nc = {
+          data: res[0],
+          cs: res[1],
+          categories: res[2],
+        };
+        setContent(nc);
+        localStorage.setItem('c', JSON.stringify(nc));
         setReady(true);
-        setContent(JSON.parse(c));
-        return;
+      } catch(e) {
+        console.log(e);
       }
-      const res = await firstFetchs();
-      setReady(true);
-      const nc = {
-        data: res[0],
-        cs: res[1],
-        categories: res[2],
-      };
-      setContent(nc);
-      localStorage.setItem('c', JSON.stringify(nc));
     })();
   }, []);
   if (!ready) {
     return (
-      <Spinner/>
+      <div style={{ width: '100vmin', height: '100vmin', background: 'black' }}>
+        <Spinner/>
+      </div>
     );
   }
   return (

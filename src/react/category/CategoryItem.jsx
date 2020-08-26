@@ -10,7 +10,7 @@ export const CategoryItem = (props) => {
   if (error) {
     return (
       <Link as={'div'} to={`/${x}`} className={styles.item}>
-        <div className={styles.image}>E</div>
+        <img className={styles.image} src="/dist/assets/error1.svg"/>
         <div className={styles.label}>
           {x.replace(/_/g, ' ')}
         </div>
@@ -30,6 +30,7 @@ export const CategoryItem = (props) => {
   return (
     <Link as={'div'} to={`/${x}`} className={styles.item}>
       <img className={styles.image} src={manifest.icon}/>
+      {data.antifeature && <img className={styles.danger} src="/dist/assets/danger1.svg"/>}
       <div className={styles.label}>
         {manifest.name}
       </div>

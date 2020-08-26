@@ -22,4 +22,16 @@ export const fileMap = [
     from: 'index.html',
     to: '404.html',
   },
+  {
+    from: 'assets',
+    to: 'dist/assets',
+  },
+  {
+    from: 'l10n/en.yml',
+    to: 'dist/l10n/en.json',
+  },
+  {
+    from: 'l10n/fa.yml',
+    to: 'dist/l10n/fa.json',
+  },
 ];

@@ -1,15 +1,48 @@
-- id: breaklock
-  cs: 3
-  repository: https://github.com/maxwellito/breaklock/
-  license: MIT
-  lang:
-    en:
-      manifest: https://maxwellito.github.io/breaklock/manifest.json
+version: 1
+data:
+  - id: breaklock
+    cs: 14
+    repository: https://github.com/maxwellito/breaklock/
+    license: MIT
+    lang:
+      en:
+        manifest: https://maxwellito.github.io/breaklock/manifest.json
+      fa:
+        manifest: https://maxwellito.github.io/breaklock/fa/manifest.json
+  - id: qrcode_generator
+    cs: 21
+    lang:
+      en:
+        manifest: https://studiolacosanostra.github.io/apps/qr-code-generator/manifest.json
 
-- id: telegram
-  cs: 5
-  repository: https://github.com/zhukov/webogram/
-  license: GPL-3.0-or-later
-  lang:
-    en:
-      manifest: https://zhukov.github.io/webogram/manifest.json
+  - id: qrcode_scanner
+    cs: 20
+    repository: https://github.com/code-kotis/qr-code-scanner
+    license: MIT
+    lang:
+      en:
+        manifest: https://qrcodescan.in/manifest.json
+
+  - id: telegram
+    cs: 13
+    antifeature:
+      - nfbackend
+    repository: https://github.com/zhukov/webogram/
+    license: GPL-3.0-or-later
+    lang:
+      en:
+        manifest: https://zhukov.github.io/webogram/manifest.webapp.json
+  - id: sounddrown
+    cs: 17
+    repository: https://github.com/petele/SoundDrown
+    license: GPL-3.0-or-later
+    lang:
+      en:
+        manifest: https://sounddrown.app/manifest.json
+  - id: webassembly_sh
+    cs: 18
+    repository: https://github.com/wasmerio/webassembly.sh
+    license: MIT
+    lang:
+      en:
+        manifest: https://webassembly.sh/manifest.json

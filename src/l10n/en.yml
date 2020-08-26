@@ -1,0 +1,9 @@
+categories:
+  dev: Development
+  tools: Tools
+  games: Games
+program:
+  direction: ltr
+ui:
+  antifeature: This app has antifeature
+  launch: Launch

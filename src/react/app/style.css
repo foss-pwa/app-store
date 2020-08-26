@@ -5,6 +5,7 @@
 .HeaderApp > img {
   width: 7rem;
   height: 7rem;
+  border-radius: 2rem;
 }
 
 .HeaderApp > div {
@@ -15,4 +16,20 @@
 .HeaderApp > div > h1 {
   font-size: 2rem;
   margin: 0;
+}
+
+.anti {
+  background: #eb0;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+}
+
+.antiImage {
+  width: 3rem;
+  height: 3rem;
+  vertical-align: middle;
+}
+
+.antiHeader {
+  font-size: 2rem;
 }
