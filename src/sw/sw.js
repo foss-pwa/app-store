@@ -54,11 +54,13 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
   if (mode === 'dev') {
     return;
+  } else if (url.origin !== location.origin) {
+    return;
   } else if (url.pathname.startsWith('/dist/')) {
     if (url.pathname.startsWith('/dist/data')) {
-      event.respondWith(
-        fetch(event.request),
-      );
+      return;
+    } else if (url.pathname.startsWith('/dist/l10n')) {
+      return;
     } else {
       event.respondWith(
         caches.match(event.request),
