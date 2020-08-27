@@ -53,9 +53,7 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
   if (mode === 'dev') {
-    event.respondWith(
-      fetch(event.request),
-    );
+    return;
   } else if (url.pathname.startsWith('/dist/')) {
     if (url.pathname.startsWith('/dist/data')) {
       event.respondWith(

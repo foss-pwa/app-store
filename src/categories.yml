@@ -2,12 +2,12 @@
   apps:
     - webassembly_sh
     - vim_wasm
-- name: tools
+- name: tool
   apps:
     - qrcode_scanner
     - qrcode_generator
     - voice_recorder
-- name: games
+- name: game
   apps:
     - breaklock
 - name: social
