@@ -34,11 +34,14 @@ export const Antifeature = (props) => {
 
 const SourceCode = (props) => {
   const { data } = props;
-  return (
-    <p>
-      <a href={data.repository}><IntlSpan k="ui.view_source"/></a> ({data.license})
-    </p>
-  );
+  if (data.type === 'github') {
+    return (
+      <p>
+        <a href={`https://github.com/${data.repository}`} target="_blank"><IntlSpan k="ui.view_source"/></a>
+      </p>
+    );
+  }
+  return <p/>;
 };
 
 export const AppPage = () => {
@@ -55,7 +58,7 @@ export const AppPage = () => {
           <IntlSpan k="ui.loading"/>
         </p>
         <Antifeature list={data.antifeature}/>
-        <SourceCode data={data}/>
+        <SourceCode data={data.source}/>
       </div>
     )
   }
@@ -68,7 +71,7 @@ export const AppPage = () => {
         start_url={manifest.start_url}
       />
       <Antifeature list={data.antifeature}/>
-      <SourceCode data={data}/>
+      <SourceCode data={data.source}/>
     </div>
   );
 };

@@ -4,6 +4,7 @@
   "description": "app store for PWAs",
   "main": "index.js",
   "scripts": {
+    "fetch": "curl https://raw.githubusercontent.com/foss-pwa/app-list/master/data.yml > data.yml",
     "dev": "node scripts/dev.mjs",
     "build": "node scripts/build.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"

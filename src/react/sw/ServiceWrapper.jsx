@@ -23,6 +23,9 @@ export const ServiceWrapper = (props) => {
         if (cancel) return;
         console.log('Checking for update' + content.cs.mxcs);
         const cs = await (await fetch("/dist/data/cs.json", { cache: 'reload' })).json();
+        if (content.cs.version !== cs.version) {
+          return;
+        }
         if (content.cs.mxcs !== cs.mxcs) {
           console.log('update');
           const res = await firstFetchs();
@@ -49,7 +52,7 @@ export const ServiceWrapper = (props) => {
           setReady(true);
           return;
         }
-        const res = await firstFetchs();
+        const [res] = await Promise.all([firstFetchs(), init()]);
         const nc = {
           data: res[0],
           cs: res[1],
