@@ -3,6 +3,7 @@
 import React from "react";
 import { ServiceWrapper } from "./sw/ServiceWrapper";
 import { Paths } from "./route/Paths";
+import "./App.css";
 
 export const App = () => {
   return (

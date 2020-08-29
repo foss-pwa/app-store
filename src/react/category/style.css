@@ -1,3 +1,20 @@
-.categoryList > h1 {
-  background: red;
+.showAll {
+  float: inline-end;
+  color: #0ff;
+  font-size: 1rem;
+}
+
+.categoryImage {
+  background-image: url('/dist/assets/category/game.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #ff0;
+  padding: 1rem;
+}
+
+.categoryName {
+  background: #444;
+  color: #fff;
+  padding: 1rem;
+  margin: 0;
 }

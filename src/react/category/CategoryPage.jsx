@@ -9,8 +9,13 @@ import { IntlSpan } from "../i18n/IntlSpan";
 const CategoryList = (props) => {
   return (
     <div className={styles.categoryList}>
-      <h1><IntlSpan k={['categories', props.name]}/></h1>
-      <div>
+      <h1 className={styles.categoryName}>
+        <IntlSpan k={['categories', props.name]}/>
+        <Link to={`/search`} className={styles.showAll}>
+          <IntlSpan k="ui.show_all"/> {props.count}
+        </Link>
+      </h1>
+      <div className={styles.categoryImage}>
         {props.apps.map((x)=>(
           <CategoryItem key={x} id={x}/>
         ))}
@@ -20,11 +25,18 @@ const CategoryList = (props) => {
 };
 
 export const CategoryPage = () => {
-  const { categories } = useContext(ContentContext);
+  const { categories, data } = useContext(ContentContext);
+  const count = (c) => data.filter(
+    (app) => app.category.find((x) => x === c) !== undefined,
+  ).length;
   return (
     <div>
       {categories.map((x)=>(
-        <CategoryList key={x.name} name={x.name} apps={x.apps}/>
+        <CategoryList
+          key={x.name} name={x.name}
+          apps={x.apps}
+          count={count(x.name)}
+        />
       ))}
       <Navbar/>
     </div>

@@ -2,15 +2,25 @@ antifeature:
   nfbackend: این برنامه وابسته به بک اند انحصاری است.
 categories:
   dev: توسعه
-  tools: ابزار ها
+  tool: ابزارها
+  game: بازی‌ها
+  social: شبکه‌های اجتماعی
+  music: صدا و موسیقی
 program:
   direction: rtl
 ui:
-  antifeature: این برنامه پاد ویژگی هایی دارد که شاید نپسندید.
+  antifeature: این برنامه پاد ویژگی‌هایی دارد که شاید نپسندید.
   launch: گشودن
   navbar:
-    categories: دسته ها
-    latest: جدید ترین
+    categories: دسته‌ها
+    latest: جدیدترین
     search: جستجو
     setting: تنظیمات
-  view_source: مشاهده منبع
+  show_all: نمایش همه
+  source:
+    source_code_and_contrib: کد منبع و مشارکت
+    issue_and_bug: گزارش باگ و مشکل
+    license: پروانه
+    source_code_in: کد منبع در
+    github:
+      repo: مخزن گیت‌هاب

@@ -1,15 +1,15 @@
 - name: dev
   apps:
     - webassembly_sh
-    - vim_wasm
 - name: tool
   apps:
     - qrcode_scanner
     - qrcode_generator
-    - voice_recorder
 - name: game
   apps:
     - breaklock
+    - yahtzee
+    - pacman
 - name: social
   apps:
     - telegram
