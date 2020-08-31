@@ -15,10 +15,15 @@ const CategoryList = (props) => {
           <IntlSpan k="ui.show_all"/> {props.count}
         </Link>
       </h1>
-      <div className={styles.categoryImage}>
-        {props.apps.map((x)=>(
-          <CategoryItem key={x} id={x}/>
-        ))}
+      <div 
+        className={styles.categoryImage} 
+        style={{ backgroundImage: `url('/dist/assets/category/${props.name}.png')` }}
+      >
+        <div className={styles.categoryDiv}>
+          {props.apps.map((x)=>(
+            <CategoryItem key={x} id={x}/>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -38,7 +43,7 @@ export const CategoryPage = () => {
           count={count(x.name)}
         />
       ))}
-      <Navbar/>
+      <Navbar enable="categories"/>
     </div>
   );
 };

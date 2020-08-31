@@ -2,14 +2,19 @@
   float: inline-end;
   color: #0ff;
   font-size: 1rem;
+  text-decoration: none;
 }
 
 .categoryImage {
-  background-image: url('/dist/assets/category/game.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-color: #ff0;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 10rem;
+  transform: scaleX(-1);
+}
+
+.categoryDiv {
+  transform: scaleX(-1);
 }
 
 .categoryName {

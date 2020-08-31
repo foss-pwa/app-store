@@ -7,33 +7,34 @@ import { useManifest } from "../sw/useManifest";
 export const CategoryItem = (props) => {
   const x = props.id;
   const { data, manifest, error } = useManifest(x);
+  const Wrapper = (p) => <Link as={'div'} to={`/app/${x}`} className={styles.item} {...p}/>
   if (error) {
     return (
-      <Link as={'div'} to={`/${x}`} className={styles.item}>
+      <Wrapper>
         <img className={styles.image} src="/dist/assets/error1.svg"/>
         <div className={styles.label}>
           {x.replace(/_/g, ' ')}
         </div>
-      </Link>
+      </Wrapper>
     );
   }
   if (!manifest) {
     return (
-      <Link as={'div'} to={`/${x}`} className={styles.item}>
+      <Wrapper>
         <Spinner className={styles.image}/>
         <div className={styles.label}>
           {x.replace(/_/g, ' ')}
         </div>
-      </Link>
+      </Wrapper>
     );
   }
   return (
-    <Link as={'div'} to={`/${x}`} className={styles.item}>
+    <Wrapper>
       <img className={styles.image} src={manifest.icon}/>
       {data.antifeature && <img className={styles.danger} src="/dist/assets/danger1.svg"/>}
       <div className={styles.label}>
         {manifest.name}
       </div>
-    </Link>
+    </Wrapper>
   );
 };

@@ -1,24 +1,34 @@
 import React from "react";
 import styles from "./Navbar.css";
 import { IntlSpan } from "../i18n/IntlSpan";
+import classNames from "classnames";
+import { Link } from "react-router-dom";
 
 const NavbarButton = (props) => {
+  const cn = classNames({
+    [styles.navbarButton]: true,
+    [styles.navbarButtonEnable]: props.enable,
+  });
   return (
-    <div className={styles.navbarButton}>
+    <Link className={cn} to={`/${props.label}`}>
       <IntlSpan k={['ui', 'navbar', props.label]}/>
-    </div>
+    </Link>
+  
   )
 };
 
-export const Navbar = () => {
+export const Navbar = ({ enable }) => {
+  const buttons = [
+    "latest",
+    "categories",
+    "search",
+    "setting",
+  ];
   return (
     <div>
       <div className={styles.navbarPlace}/>
       <div className={styles.navbar}>
-        <NavbarButton label="latest"/>
-        <NavbarButton label="categories"/>
-        <NavbarButton label="search"/>
-        <NavbarButton label="setting"/>
+        {buttons.map((x) => <NavbarButton label={x} enable={enable === x}/>)}
       </div>
     </div>
   )
