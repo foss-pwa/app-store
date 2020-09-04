@@ -8,7 +8,6 @@
 .categoryImage {
   background-size: contain;
   background-repeat: no-repeat;
-  background-color: #ff0;
   padding: 1rem 1rem 1rem 10rem;
 }
 .categoryImage:dir(rtl) {

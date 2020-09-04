@@ -2,3 +2,8 @@
   background: var(--theme-back-1);
   padding: 1px;
 }
+
+.categoryName {
+  margin: .5rem;
+  font-size: 1.5rem;
+}

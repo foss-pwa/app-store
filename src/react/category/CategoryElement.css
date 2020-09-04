@@ -1,0 +1,13 @@
+.elem {
+  background-color: var(--navbar-back);
+  border: none;
+  border-radius: .5em;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: .5em;
+  padding: .5em;
+  position: relative;
+  top: -0.5em;
+}

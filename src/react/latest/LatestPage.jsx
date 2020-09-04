@@ -6,8 +6,20 @@ import { IntlSpan } from "../i18n/IntlSpan";
 import { CommonItem } from "../category/CategoryItem";
 import LE1S from "./LatestE1.css";
 import styles from "./LatestPage.css";
+import { CategoryElement } from "../category/CategoryElement";
 
-const LatestElement = CommonItem({ styles: LE1S });
+const LatestElement = CommonItem({ styles: LE1S, IC: {
+  AfterName: ({ data }) => {
+    if (!data) return <div/>;
+    return (
+      <div className={styles.categoryName}>
+        {data.category.map((x)=>(
+          <CategoryElement k={x}/>
+        ))}
+      </div>
+    );
+  },
+}});
 
 export const LatestPage = () => {
   const { data } = useContext(ContentContext);

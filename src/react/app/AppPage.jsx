@@ -8,6 +8,7 @@ import { getFullData } from "../../source-code-info-getter/index.mjs";
 import { EA as BEA } from "../util/EA";
 import { EAButton } from "../util/Button";
 import { blue } from "../category/CategoryItem.css";
+import { CategoryElement } from "../category/CategoryElement";
 
 const EA = (props) => <BEA className={styles.link} {...props}/>
 
@@ -16,7 +17,9 @@ const HeaderApp = (props) => {
     <div className={styles.HeaderApp}>
       <img src={props.icon} className={blue}/>
       <div>
-        <h1>{props.name}</h1>
+        <h1>{props.name} {props.category.map((x)=>(
+          <CategoryElement k={x}/>
+        ))}</h1>
         <p>{props.description}</p>
         <EAButton href={props.start_url} k="ui.launch"/>
       </div>
@@ -109,6 +112,7 @@ export const AppPage = () => {
       <div className={styles.appPage}>
         <HeaderApp
           name={manifest.name}
+          category={data.category}
           description={manifest.description}
           icon={manifest.icon}
           start_url={manifest.start_url}

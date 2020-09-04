@@ -17,7 +17,10 @@ const CategoryList = (props) => {
       </h1>
       <div 
         className={styles.categoryImage} 
-        style={{ backgroundImage: `url('/dist/assets/category/${props.name}.png')` }}
+        style={{
+          backgroundImage: `url('/dist/assets/category/${props.name}.png')`,
+          backgroundColor: props.color,
+        }}
       >
         <div className={styles.categoryDiv}>
           {props.apps.map((x)=>(
@@ -38,8 +41,7 @@ export const CategoryPage = () => {
     <div>
       {categories.map((x)=>(
         <CategoryList
-          key={x.name} name={x.name}
-          apps={x.apps}
+          {...x}
           count={count(x.name)}
         />
       ))}
