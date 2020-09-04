@@ -18,6 +18,10 @@ export const SettingPage = () => {
       [key]: e.target.value,
     });
   };
+  const clearAll = () => {
+    localStorage.removeItem('c');
+    window.location.reload();  
+  };
   const saveSetting = () => {
     localStorage.setItem('c', JSON.stringify({
       ...content,
@@ -33,7 +37,8 @@ export const SettingPage = () => {
       <h1><IntlSpan k="ui.navbar.setting"/></h1>
       <Button k="ui.save" onClick={saveSetting}/>
       <div>
-      <div>
+        <h2><IntlSpan k="ui.general"/></h2>
+        <div>
           <IntlSpan k="ui.preferred_language"/>{': '}
           <input
             dir="ltr"
@@ -50,8 +55,13 @@ export const SettingPage = () => {
             value={"https://allorigins.win"}
             disabled={true}
           />
+        </div>      
+      </div>
+      <div>
+        <h2><IntlSpan k="ui.storage"/></h2>
+        <div>
+          <IntlSpan k="ui.remove_everything"/>: <Button k="ui.clear" onClick={clearAll}/>
         </div>
-        
       </div>
       <Navbar enable="setting"/>
     </div>

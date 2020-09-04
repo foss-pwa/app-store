@@ -10,7 +10,9 @@ program:
   direction: ltr
 ui:
   antifeature: This app has antifeature
+  clear: Clear
   cors_proxy: Cors proxy
+  general: General
   launch: Launch
   navbar:
     categories: Categories
@@ -19,6 +21,7 @@ ui:
     setting: Setting
   not_implemented: Sorry. This feature is not implemented yet.
   preferred_language: Preferred languages
+  remove_everything: Remove everything stored locally (app list, settings, ...)
   save: Save
   show_all: Show all
   source:
@@ -28,3 +31,4 @@ ui:
     source_code_in: Source code in
     github:
       repo: Github repository
+  storage: Storage

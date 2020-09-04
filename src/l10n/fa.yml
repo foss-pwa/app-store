@@ -10,7 +10,9 @@ program:
   direction: rtl
 ui:
   antifeature: این برنامه پاد ویژگی‌هایی دارد که شاید نپسندید.
+  clear: پاک کن
   cors_proxy: پراکسی سی‌اوآراس
+  general: عمومی
   launch: گشودن
   navbar:
     categories: دسته‌ها
@@ -19,6 +21,7 @@ ui:
     setting: تنظیمات
   not_implemented: متاسفانه این قابلیت هنوز پیاده سازی نشده است.
   preferred_language: زبان‌های مورد نظر
+  remove_everything: پاک کردن همه چیز (فهرست برنامه ها، تنظیمات، ...)
   save: ذخیره
   show_all: نمایش همه
   source:
@@ -28,3 +31,4 @@ ui:
     source_code_in: کد منبع در
     github:
       repo: مخزن گیت‌هاب
+  storage: حافظه
