@@ -4,13 +4,13 @@ import { bestLang, getOld } from "../sw/manifestStore";
 import { bestFitIcon } from "../../util/manifestParser";
 
 export const useManifest = (id) => {
-  const { data: apps } = useContext(ContentContext);
+  const { data: apps, setting } = useContext(ContentContext);
   const [manifest, setManifest] = useState();
   const data = apps.find((x)=>x.id === id);
   useEffect(()=>{
     (async () => {
       if (data === undefined) return;
-      const l = bestLang(data.lang);
+      const l = bestLang(data.lang, setting.lang);
       const url = data.lang[l].manifest;
       const r = await getOld(url, l);
       setManifest({

@@ -1,4 +1,4 @@
-const pl = navigator.languages;
+let pl = navigator.languages;
 
 const d = new Map();
 
@@ -15,7 +15,8 @@ export const getText = (ar) => {
   return ar.join('.');
 };
 
-export const init = async () => {
+export const init = async (langs) => {
+  pl = langs;
   await Promise.all(pl.map(async (l)=>{
     try {
       const res = await (await fetch(`/dist/l10n/${l}.json`)).json()
@@ -24,5 +25,5 @@ export const init = async () => {
       d.set(l, {});
     }
   }));
-  document.body.style.direction = getText(['program', 'direction']);
+  document.body.dir = getText(['program', 'direction']);
 };

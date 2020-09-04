@@ -31,6 +31,7 @@ export const ServiceWrapper = (props) => {
             console.log('update');
             const res = await firstFetchs();
             const nc = {
+              ...content,
               data: res[0],
               cs: res[1],
               categories: res[2],
@@ -51,16 +52,22 @@ export const ServiceWrapper = (props) => {
       try{
         const c = localStorage.getItem('c');
         if (c != undefined) {
-          await init();
-          setContent(JSON.parse(c));
+          const cj = JSON.parse(c);
+          await init(cj.setting.lang);
+          setContent(cj);
           setReady(true);
           return;
         }
-        const [res] = await Promise.all([firstFetchs(), init()]);
+        const [res] = await Promise.all([
+          firstFetchs(), init(navigator.languages),
+        ]);
         const nc = {
           data: res[0],
           cs: res[1],
           categories: res[2],
+          setting: {
+            lang: navigator.languages,
+          },
         };
         setContent(nc);
         localStorage.setItem('c', JSON.stringify(nc));

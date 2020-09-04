@@ -1,3 +1,6 @@
 body {
   margin: 0;
+  --theme-back-1: #444;
+  --theme-font-color: white;
+  --navbar-back: rgb(25, 50, 250);
 }

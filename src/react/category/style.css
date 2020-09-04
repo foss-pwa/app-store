@@ -10,10 +10,12 @@
   background-repeat: no-repeat;
   background-color: #ff0;
   padding: 1rem 1rem 1rem 10rem;
+}
+.categoryImage:dir(rtl) {
   transform: scaleX(-1);
 }
 
-.categoryDiv {
+.categoryDiv:dir(rtl) {
   transform: scaleX(-1);
 }
 

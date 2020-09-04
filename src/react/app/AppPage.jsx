@@ -5,16 +5,20 @@ import { useManifest } from "../sw/useManifest";
 import { IntlSpan } from "../i18n/IntlSpan";
 import { getSimpleData } from "../../source-code-info-getter/index.mjs";
 import { getFullData } from "../../source-code-info-getter/index.mjs";
-import { EA } from "../util/EA";
+import { EA as BEA } from "../util/EA";
+import { EAButton } from "../util/Button";
+import { blue } from "../category/CategoryItem.css";
+
+const EA = (props) => <BEA className={styles.link} {...props}/>
 
 const HeaderApp = (props) => {
   return (
     <div className={styles.HeaderApp}>
-      <img src={props.icon}/>
+      <img src={props.icon} className={blue}/>
       <div>
         <h1>{props.name}</h1>
         <p>{props.description}</p>
-        <EA href={props.start_url}><IntlSpan k="ui.launch"/></EA>
+        <EAButton href={props.start_url} k="ui.launch"/>
       </div>
     </div>
   );
@@ -35,6 +39,18 @@ export const Antifeature = (props) => {
   );
 };
 
+const IssueCount = ({ href, count }) => {
+  if (!count) {
+    return <EA href={href}>
+      <IntlSpan k="ui.source.issue_and_bug"/>
+    </EA>
+  }
+  return <EA href={href}>
+    <IntlSpan k="ui.source.issue_and_bug"/> (<i className="fa fa-exclamation-circle"/> {count})
+  </EA>;
+};
+
+
 const SourceCode = (props) => {
   const { data } = props;
   const [x, setX] = useState(getSimpleData(data));
@@ -51,13 +67,11 @@ const SourceCode = (props) => {
           <li>
             <IntlSpan k="ui.source.source_code_in"/>{' '}
             <EA href={`https://github.com/${data.repository}`}>
-              <IntlSpan k="ui.source.github.repo"/>
+              <i className="fa fa-github"/> <IntlSpan k="ui.source.github.repo"/>
             </EA>
           </li>
           {x.issue && <li>
-            <EA href={x.issue.url}>
-              <IntlSpan k="ui.source.issue_and_bug"/>
-            </EA>
+            <IssueCount href={x.issue.url} count={x.issue.countOpen}/>
           </li>}
           {x.license && <li>
             <IntlSpan k="ui.source.license"/>{': '}
@@ -80,7 +94,7 @@ export const AppPage = () => {
   }
   if (!manifest) {
     return (
-      <div>
+      <div className={styles.appPage}>
         <h1>{id}</h1>
         <p>
           <IntlSpan k="ui.loading"/>
@@ -91,15 +105,17 @@ export const AppPage = () => {
     )
   }
   return (
-    <div>
-      <HeaderApp
-        name={manifest.name}
-        description={manifest.description}
-        icon={manifest.icon}
-        start_url={manifest.start_url}
-      />
-      <Antifeature list={data.antifeature}/>
-      <SourceCode data={data.source}/>
+    <div className={styles.background}>
+      <div className={styles.appPage}>
+        <HeaderApp
+          name={manifest.name}
+          description={manifest.description}
+          icon={manifest.icon}
+          start_url={manifest.start_url}
+        />
+        <Antifeature list={data.antifeature}/>
+        <SourceCode data={data.source}/>
+      </div>
     </div>
   );
 };

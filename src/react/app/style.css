@@ -20,6 +20,7 @@
 
 .anti {
   background: #eb0;
+  color: black;
   padding: 0.5rem;
   border-radius: 0.4rem;
 }
@@ -32,4 +33,31 @@
 
 .antiHeader {
   font-size: 2rem;
+}
+
+.appPage {
+  background-color: black;
+  color: white;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.appPage > * {
+  margin: 1rem;
+}
+
+.background {
+  background: var(--theme-back-1);
+  min-height: calc(100vh - 2rem);
+  padding: 1rem;
+}
+
+.link {
+  text-decoration: none;
+  color: #0ff;
+}
+
+.link:hover {
+  color: #f0f;
 }

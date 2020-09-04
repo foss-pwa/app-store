@@ -1,5 +1,5 @@
-export const bestLang = (obj) => {
-  const r = navigator.languages.find((x) => {
+export const bestLang = (obj, langs) => {
+  const r = langs.find((x) => {
     if (obj[x]) return true;
     return false;
   });

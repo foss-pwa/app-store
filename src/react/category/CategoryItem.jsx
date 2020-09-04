@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import styles from "./CategoryItem.css";
+import myStyles from "./CategoryItem.css";
 import { Spinner } from "../util/Spinner";
 import { useManifest } from "../sw/useManifest";
+import classNames from "classnames";
 
-export const CategoryItem = (props) => {
+export const CommonItem = ({ styles }) => (props) => {
   const x = props.id;
   const { data, manifest, error } = useManifest(x);
   const Wrapper = (p) => <Link as={'div'} to={`/app/${x}`} className={styles.item} {...p}/>
@@ -30,7 +31,10 @@ export const CategoryItem = (props) => {
   }
   return (
     <Wrapper>
-      <img className={styles.image} src={manifest.icon}/>
+      <img
+        className={classNames(styles.image, styles.blue)}
+        src={manifest.icon}
+      />
       {data.antifeature && <img className={styles.danger} src="/dist/assets/danger1.svg"/>}
       <div className={styles.label}>
         {manifest.name}
@@ -38,3 +42,5 @@ export const CategoryItem = (props) => {
     </Wrapper>
   );
 };
+
+export const CategoryItem = CommonItem({ styles: myStyles });

@@ -10,12 +10,16 @@ program:
   direction: rtl
 ui:
   antifeature: این برنامه پاد ویژگی‌هایی دارد که شاید نپسندید.
+  cors_proxy: پراکسی سی‌اوآراس
   launch: گشودن
   navbar:
     categories: دسته‌ها
     latest: جدیدترین
     search: جستجو
     setting: تنظیمات
+  not_implemented: متاسفانه این قابلیت هنوز پیاده سازی نشده است.
+  preferred_language: زبان‌های مورد نظر
+  save: ذخیره
   show_all: نمایش همه
   source:
     source_code_and_contrib: کد منبع و مشارکت

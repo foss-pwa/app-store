@@ -2,6 +2,7 @@ import webpack from "webpack";
 import { join } from "path";
 import { srcFolder } from "../paths.mjs";
 import { buildFolder } from "../paths.mjs";
+import ErrorOverlayPlugin from "error-overlay-webpack-plugin";
 
 const config = (mode) => ({
   mode,
@@ -20,7 +21,9 @@ const config = (mode) => ({
               "@babel/preset-react",
             ],
             plugins: [
-              ...(mode === 'production' ? [] : ["@babel/plugin-transform-react-jsx-source"]),
+              ...(mode === 'production' ? [] : [
+                "@babel/plugin-transform-react-jsx-source",
+              ]),
             ],
           },
         }],
@@ -45,7 +48,9 @@ const config = (mode) => ({
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new ErrorOverlayPlugin(),
   ],
+  devtool: 'cheap-module-source-map',
 });
 
 export const productionCompiler = webpack(config('production'));

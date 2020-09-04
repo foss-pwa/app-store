@@ -1,10 +1,10 @@
 .navbar {
-  background: blue;
+  background: var(--navbar-back);
   position: fixed;
   bottom: 0;
   left: 0;
   width: calc(100% - 2rem);
-  height: 1.5rem;
+  height: 2rem;
   padding: .5rem 1rem;
   display: flex;
 }

@@ -16,3 +16,4 @@
 - name: music
   apps:
     - sounddrown
+    - react_music_playlist

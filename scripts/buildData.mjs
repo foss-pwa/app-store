@@ -26,15 +26,14 @@ export const buildData = async () => {
   await writeFile(join(dataFolder, 'cs.json'), JSON.stringify({ mxcs, mics, version }));
   await writeFile(
     join(dataFolder, '0.json'),
-    JSON.stringify(data.map(({ cs, ...others }) => others)),
+    JSON.stringify(data),
   );
   await Promise.all(
     new Array(mxcs - mics).fill().map(async (_, i) => {
       const l = i + mics;
       const r = l + level(l);
       const cd = data
-        .filter(({ cs }) => (l <= cs && cs < r))
-        .map(({ cs, ...others }) => others);
+        .filter(({ cs }) => (l <= cs && cs < r));
       const path = join(dataFolder, `${l}.json`);
       await writeFile(path, JSON.stringify(cd));
     }),

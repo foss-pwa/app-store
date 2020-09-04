@@ -1,9 +1,30 @@
+antifeature:
+  nfbackend: This app depends on a proprietary backend
 categories:
   dev: Development
-  tools: Tools
-  games: Games
+  tool: Tools
+  game: Games
+  social: Social networks
+  music: Music and sound
 program:
   direction: ltr
 ui:
   antifeature: This app has antifeature
+  cors_proxy: Cors proxy
   launch: Launch
+  navbar:
+    categories: Categories
+    latest: Latest
+    search: Search
+    setting: Setting
+  not_implemented: Sorry. This feature is not implemented yet.
+  preferred_language: Preferred languages
+  save: Save
+  show_all: Show all
+  source:
+    source_code_and_contrib: Source code and contribution
+    issue_and_bug: Report bug and problems
+    license: License
+    source_code_in: Source code in
+    github:
+      repo: Github repository
