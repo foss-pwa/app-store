@@ -17,10 +17,10 @@ const build = async () => {
   await rmdir(buildFolder, { recursive: true });
   await mkdir(join(buildFolder, 'dist', 'l10n'), { recursive: true });
   await buildData();
+  await writeFile(join(buildFolder, 'CNAME'), 'fosspwa.js.org');
   await Promise.all(fileMap.map(async ({ from, to }) => {
     const f = join(srcFolder, from);
     const t = join(buildFolder, to);
-    console.log(f);
     if (from.endsWith('.json')) {
       const data = JSON.parse((await readFile(f)).toString());
       await writeFile(t, JSON.stringify(data));
