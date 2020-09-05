@@ -1,5 +1,6 @@
 import { buildData } from "./buildData.mjs";
 import fs from "fs";
+import fsEx from "fs-extra";
 import { promisify } from "util";
 import { buildFolder, srcFolder } from "../paths.mjs";
 import { join } from "path";
@@ -12,15 +13,14 @@ const rmdir = promisify(fs.rmdir);
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 
-const dist = join(buildFolder, 'dist');
-
 const build = async () => {
   await rmdir(buildFolder, { recursive: true });
-  await mkdir(dist, { recursive: true });
+  await mkdir(join(buildFolder, 'dist', 'l10n'), { recursive: true });
   await buildData();
   await Promise.all(fileMap.map(async ({ from, to }) => {
     const f = join(srcFolder, from);
     const t = join(buildFolder, to);
+    console.log(f);
     if (from.endsWith('.json')) {
       const data = JSON.parse((await readFile(f)).toString());
       await writeFile(t, JSON.stringify(data));
@@ -28,7 +28,7 @@ const build = async () => {
       const data = yaml.parse((await readFile(f)).toString());
       await writeFile(t, JSON.stringify(data));
     } else {
-      await writeFile(t, await readFile(f));
+      await fsEx.copy(f, t);
     }
   }));
   await new Promise((res, rej) => {
@@ -46,4 +46,14 @@ const build = async () => {
   });
 };
 
-build();
+const main = async () => {
+  try {
+    await build();
+  } catch(e) {
+    console.log('Build Failed:');
+    console.log(e.stack);
+    process.exit(1);
+  }
+};
+
+main();
