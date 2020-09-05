@@ -1,0 +1,1 @@
+[{"id":"pacman","cs":3,"source":{"type":"github","repository":"vitaliy-bobrov/pacman-pwa"},"category":["game"],"lang":{"en":{"manifest":"https://bobrov.dev/pacman-pwa/manifest.json"}}},{"id":"yahtzee","cs":2,"source":{"type":"github","repository":"zpix1/yahtzee"},"category":["game"],"lang":{"en":{"manifest":"https://zpix1.github.io/yahtzee/static/manifest.json"}}}]
