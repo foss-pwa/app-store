@@ -7,6 +7,8 @@
   margin-inline-end: 20px;
   word-wrap: break-word;
   text-decoration: none;
+  white-space: normal;
+  vertical-align: top;
 }
 
 .image {

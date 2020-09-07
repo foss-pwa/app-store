@@ -18,6 +18,11 @@
   transform: scaleX(-1);
 }
 
+.categoryDiv {
+  white-space: nowrap;
+  overflow: auto;
+}
+
 .categoryName {
   background: #444;
   color: #fff;
