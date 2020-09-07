@@ -5,9 +5,9 @@ console.log('salam');
 
 const mode = 'prod';
 
-const version = '1.0.1';
+const version = '1.0.2';
 const mainCache = 'main-v2';
-const assetCache = 'asset-v2';
+const assetCache = 'asset-v3';
 const expectedCaches = [mainCache, assetCache];
 
 const addToCache = (cn, request, response) => caches.open(cn)
@@ -19,6 +19,14 @@ self.addEventListener('install', async (event) => {
       await (await caches.open(mainCache)).addAll(['/', '/dist/bundle.js']);
       await (await caches.open(assetCache)).addAll([
         '/dist/manifest.json',
+        '/dist/assets/danger1.svg',
+        '/dist/assets/error_reload1.svg',
+        '/dist/assets/error1.svg',
+        '/dist/assets/category/dev.png',
+        '/dist/assets/category/game.png',
+        '/dist/assets/category/music.png',
+        '/dist/assets/category/social.png',
+        '/dist/assets/category/tool.png',
       ]);
       await self.skipWaiting();
     } catch (e) {
