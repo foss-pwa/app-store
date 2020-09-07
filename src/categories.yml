@@ -17,6 +17,7 @@
   color: "#0ff"
   apps:
     - telegram
+    - pinafore
 - name: music
   color: "#f00"
   apps:
