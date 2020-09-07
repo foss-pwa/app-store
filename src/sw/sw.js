@@ -5,9 +5,9 @@ console.log('salam');
 
 const mode = 'prod';
 
-const version = '1.0.0';
-const mainCache = 'main-v1';
-const assetCache = 'asset-v1';
+const version = '1.0.1';
+const mainCache = 'main-v2';
+const assetCache = 'asset-v2';
 const expectedCaches = [mainCache, assetCache];
 
 const addToCache = (cn, request, response) => caches.open(cn)
