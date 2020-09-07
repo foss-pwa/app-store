@@ -1,12 +1,12 @@
 import { buildData } from "./buildData.mjs";
 import fs from "fs";
 import { promisify } from "util";
-import { buildFolder, srcFolder, certFolder } from "../paths.mjs";
+import { buildFolder, srcFolder } from "../paths.mjs";
 import { join } from "path";
 import { fileMap } from "./fileMap.mjs";
 import { developmentCompiler } from "./webpackCompiler.mjs";
-import { spawn } from "child_process";
 import yaml from "yaml";
+import { serveDev } from "./serveDev.mjs";
 
 const symlink = promisify(fs.symlink);
 const mkdir = promisify(fs.mkdir);
@@ -49,18 +49,7 @@ const dev = async () => {
       console.log(stats.toString({ colors: true }));
     }
   });
-  const server = spawn('http-server', [
-    buildFolder,
-    '--ssl',
-    '--cert',
-    join(certFolder, 'device.crt'),
-    '--key',
-    join(certFolder, 'device.key'),
-    '--port',
-    '8080',
-  ], {
-    stdio: 'inherit',
-  });
+  serveDev();
 };
 
 dev();
