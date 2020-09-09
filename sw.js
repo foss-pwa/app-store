@@ -5,7 +5,7 @@ console.log('salam');
 
 const mode = 'prod';
 
-const version = '1.0.2';
+const version = '1.0.3';
 const mainCache = 'main-v2';
 const assetCache = 'asset-v3';
 const expectedCaches = [mainCache, assetCache];
@@ -30,7 +30,7 @@ self.addEventListener('install', async (event) => {
       ]);
       await self.skipWaiting();
     } catch (e) {
-      console.log(e);
+      console.error(e);
       throw e;
     }
   })());
