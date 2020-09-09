@@ -20,7 +20,7 @@
 
 .categoryDiv {
   white-space: nowrap;
-  overflow: auto;
+  overflow-x: auto;
 }
 
 .categoryName {

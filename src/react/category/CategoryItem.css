@@ -5,6 +5,7 @@
   width: 8rem;
   height: 10rem;
   margin-inline-end: 20px;
+  padding-top: 0.5rem;
   word-wrap: break-word;
   text-decoration: none;
   white-space: normal;
@@ -29,11 +30,21 @@
   position: relative;
   top: -4.5rem;
   inset-inline-start: -0.5rem;
+  float: right;
   float: inline-end;
 }
 
 .label {
   margin: 0 0.5rem;
+  font-weight: bold;
   color: white;
   text-align: center;
+}
+
+.ICdescription {
+  font-size: .8rem;
+  font-weight: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

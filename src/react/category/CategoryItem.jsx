@@ -46,4 +46,13 @@ export const CommonItem = ({ styles, IC }) => (props) => {
   );
 };
 
-export const CategoryItem = CommonItem({ styles: myStyles });
+export const CategoryItem = CommonItem({ styles: myStyles, IC: {
+  AfterName: ({ manifest }) => {
+    if (!manifest || !manifest.description) return <div/>;
+    const n = 25;
+    const text = manifest.description.length > n ? manifest.description.slice(0, n) + "..." : manifest.description;
+    return (
+      <div className={myStyles.ICdescription}>{ text }</div>
+    );
+  },
+}});
