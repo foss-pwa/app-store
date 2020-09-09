@@ -23,6 +23,7 @@ const CategoryList = (props) => {
         }}
       >
         <div className={styles.categoryDiv}>
+          <div className={styles.ListPadding}/>
           {props.apps.map((x)=>(
             <CategoryItem key={x} id={x}/>
           ))}

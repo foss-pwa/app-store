@@ -8,7 +8,7 @@
 .categoryImage {
   background-size: contain;
   background-repeat: no-repeat;
-  padding: 1rem 1rem 1rem 10rem;
+  padding: 1rem 0;
 }
 .categoryImage:dir(rtl) {
   transform: scaleX(-1);
@@ -28,4 +28,10 @@
   color: #fff;
   padding: 2rem 1rem 0.5rem 1rem;
   margin: 0;
+}
+
+.ListPadding {
+  width: 10rem;
+  display: inline-block;
+  height: 1rem;
 }
