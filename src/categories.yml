@@ -18,6 +18,7 @@
   apps:
     - telegram
     - pinafore
+    - sengi
 - name: music
   color: "#f00"
   apps:
